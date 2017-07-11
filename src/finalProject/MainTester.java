@@ -1,5 +1,8 @@
 package finalProject;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class MainTester
@@ -11,6 +14,10 @@ public class MainTester
 		int[] list = new int[100001];
 		int[] list1 = list;
 		int[] list2 = list;
+		int[] list3 = list;
+		
+		List<Integer> list3Array = new ArrayList<Integer>();
+		
 		
 		Random r = new Random();
 		
@@ -32,6 +39,7 @@ public class MainTester
 		{
 			list1[i] = list[i];
 			list2[i] = list[i];
+			list3Array.add(i);
 			
 		}
 		
@@ -65,17 +73,15 @@ public class MainTester
 		
 		
 		System.out.println("Binary Search....");
-
 		
 		timeB4 = System.currentTimeMillis();
-		System.out.println("Found at position " + binarySearch.binarySearch(list, 900));
+		Collections.sort(list3Array);
+		System.out.println("Found at position " + binarySearch.binarySearch(list3Array, 900));
 		timeAfter = System.currentTimeMillis();
 		System.out.println("Binary Search took: " + (timeAfter - timeB4) + "ms");
 		
 		
 		System.out.println("Linear Search....");
-
-		
 		
 		timeB4 = System.currentTimeMillis();
 		System.out.println("Found at position " + linearSearch.search(list, 900));
