@@ -1,16 +1,23 @@
 package finalProject;
 
+import java.util.Iterator;
+import java.util.List;
+
 class LinearSearch
 {
     // This function returns index of element x in arr[]
-    static int search(int arr[], int x)
+    static int search(List<Integer> list, int x)
     {
-        for (int i = 0; i < arr.length - 1; i++)
+    	int position = -1;
+    	
+        for (Iterator<Integer> it = list.iterator(); it.hasNext();)
         {
+        	++position;
+        	int next = it.next();
             // Return the index of the element if the element
             // is found
-            if (arr[i] == x)
-                return i;
+            if (next == x)
+                return position;
         }
   
         // return -1 if the element is not found

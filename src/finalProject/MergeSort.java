@@ -1,90 +1,70 @@
 package finalProject;
 
 /* Java program for Merge Sort */
-class MergeSort
+public class MergeSort
 {
-	// Merges two subarrays of arr[].
-	// First subarray is arr[l..m]
-	// Second subarray is arr[m+1..r]
-	void merge(int arr[], int l, int m, int r)
+	static int count = 0;
+
+	private static void merge(int[] first, int[] second, int[] a)
 	{
-		// Find sizes of two subarrays to be merged
-		int n1 = m - l + 1;
-		int n2 = r - m;
-
-		/* Create temp arrays */
-		int L[] = new int[n1];
-		int R[] = new int[n2];
-
-		/* Copy data to temp arrays */
-		for (int i = 0; i < n1; i++)
-			L[i] = arr[l + i];
-		for (int j = 0; j < n2; j++)
-			R[j] = arr[m + 1 + j];
-
-		/* Merge the temp arrays */
-
-		// Initial indexes of first and second subarrays
-		int i = 0, j = 0;
-
-		// Initial index of merged subarry array
-		int k = l;
-		while (i < n1 && j < n2)
+		int iFirst = 0; // Next element to consider in the first array
+		int iSecond = 0; // Next element to consider in the second array
+		int j = 0; // Next open position in a
+		// As long as neither iFirst nor iSecond is past the end, move
+		// the smaller element into a
+		while (iFirst < first.length && iSecond < second.length)
 		{
-			if (L[i] <= R[j])
+			if (first[iFirst] < second[iSecond])
 			{
-				arr[k] = L[i];
-				i++;
+				a[j] = first[iFirst];
+				iFirst++;
 			} else
 			{
-				arr[k] = R[j];
-				j++;
+				a[j] = second[iSecond];
+				iSecond++;
 			}
-			k++;
-		}
-
-		/* Copy remaining elements of L[] if any */
-		while (i < n1)
-		{
-			arr[k] = L[i];
-			i++;
-			k++;
-		}
-
-		/* Copy remaining elements of R[] if any */
-		while (j < n2)
-		{
-			arr[k] = R[j];
 			j++;
-			k++;
 		}
-	}
 
-	// Main function that sorts arr[l..r] using
-	// merge()
-	void sort(int arr[], int l, int r)
-	{
-		if (l < r)
+		// Note that only one of the two loops below copies entries
+		// Copy any remaining entries of the first array
+		while (iFirst < first.length)
 		{
-			// Find the middle point
-			int m = (l + r) / 2;
-
-			// Sort first and second halves
-			sort(arr, l, m);
-			sort(arr, m + 1, r);
-
-			// Merge the sorted halves
-			merge(arr, l, m, r);
+			a[j] = first[iFirst];
+			iFirst++;
+			j++;
+			count++;
+		}
+		// Copy any remaining entries of the second half
+		while (iSecond < second.length)
+		{
+			a[j] = second[iSecond];
+			iSecond++;
+			j++;
+			count++;
 		}
 	}
 
-	/* A utility function to print array of size n */
-	static void printArray(int arr[])
+	public static void sort(int[] list)
 	{
-		int n = arr.length;
-		for (int i = 0; i < n; ++i)
-			System.out.print(arr[i] + " ");
-		System.out.println();
+		int r = list.length;
+		if (list.length <= 1)
+		{
+			return;
+		}
+		int[] left = new int[(r / 2)];
+		int[] right = new int[r - r / 2];
+		for (int i = 0; i < left.length; i++)
+		{
+			left[i] = list[i];
+		}
+		for (int i = 0; i < right.length; i++)
+		{
+			right[i] = list[left.length + i];
+		}
+
+		sort(left);
+		sort(right);
+		merge(left, right, list);
 	}
 }
-/* This code is contributed by Rajat Mishra */

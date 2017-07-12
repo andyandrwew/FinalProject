@@ -7,7 +7,7 @@ class BinarySearch
 {
  // Returns index of x if it is present in arr[], else
  // return -1
- int binarySearch(List<Integer> list, int x)
+ static int binarySearch(List<Integer> list, int x)
  {
      int l = 0, r = list.size();
      while (l <= r)
