@@ -11,7 +11,7 @@ public class MainTester
 	public static void main(String[] args)
 	{
 		// TODO Auto-generated method stub
-		int[] list = new int[100001];
+		int[] list = new int[200000];
 		int[] list1 = list;
 		int[] list2 = list;
 		int[] list3 = list;
@@ -30,12 +30,12 @@ public class MainTester
 		
 		System.out.println("Building data..." + "\n");
 		
-		for(int i = 0; i < 100000; i++)
+		for(int i = 0; i < 200000; i++)
 		{
 			list[i] = r.nextInt();
 		}
 		
-		for(int i = 0; i < 100000; i++)
+		for(int i = 0; i < 200000; i++)
 		{
 			list1[i] = list[i];
 			list2[i] = list[i];
@@ -43,9 +43,6 @@ public class MainTester
 			
 		}
 		
-		list[100000] = 900;
-		list1[100000] = 900;
-		list2[100000] = 900;
 		
 		System.out.println("Insertion Sort....");
 
