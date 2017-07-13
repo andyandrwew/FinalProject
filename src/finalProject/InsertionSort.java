@@ -4,7 +4,7 @@ package finalProject;
 class InsertionSort
 {
  /*Function to sort array using insertion sort*/
- void sort(int arr[])
+ static void sort(int arr[])
  {
      int n = arr.length;
      for (int i=1; i<n; ++i)

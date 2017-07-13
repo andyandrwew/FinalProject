@@ -6,17 +6,14 @@ import java.util.List;
 class LinearSearch
 {
     // This function returns index of element x in arr[]
-    static int search(List<Integer> list, int x)
+    static int search(int[] list, int x)
     {
     	int position = -1;
     	
-        for (Iterator<Integer> it = list.iterator(); it.hasNext();)
+        for (int i = 0; i < list.length; i++)
         {
         	++position;
-        	int next = it.next();
-            // Return the index of the element if the element
-            // is found
-            if (next == x)
+            if (list[i] == x)
                 return position;
         }
   
