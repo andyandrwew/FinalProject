@@ -11,7 +11,9 @@ public class MainTester
 
 	public static void main(String[] args)
 	{
+		//modify number of entries to sort and search through below
 		int arraySizes = 200000;
+		
 		int position = -1;
 		int[] list = new int[arraySizes];
 		int[] list1 = list;
@@ -19,12 +21,14 @@ public class MainTester
 		int[] list3 = list;
 		
 		
+		//modify the integer to search for below
 		int searchNum = 100;
 		
+		
+		//modify range of integers below 
 		int minRange = -4;
 		int maxRange = list.length - 4;
 			
-		
 		Random r = new Random();
 		
 		System.out.println("Building data..." + "\n");
@@ -58,12 +62,12 @@ public class MainTester
 		timeAfter = System.currentTimeMillis();
 		System.out.println("Bubble Sort took: " + (timeAfter - timeB4) + "ms");		
 		
-		System.out.println("Linear Search....");
+		System.out.println("\n" + "Linear Search....");
 		
 		timeB4 = System.currentTimeMillis();
 		position = LinearSearch.search(list3, searchNum);
 		timeAfter = System.currentTimeMillis();
-		System.out.println("\n" + "Found at position " + position);
+		System.out.println("Found at position " + position);
 		System.out.println("Linear Search took: " + (timeAfter - timeB4) + "ms");		
 		
 		System.out.println("Binary Search....");

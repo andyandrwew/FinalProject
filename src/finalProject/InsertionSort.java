@@ -1,10 +1,10 @@
 package finalProject;
 
 //Java program for implementation of Insertion Sort
-class InsertionSort
+public class InsertionSort
 {
  /*Function to sort array using insertion sort*/
- static void sort(int arr[])
+ public static void sort(int arr[])
  {
      int n = arr.length;
      for (int i=1; i<n; ++i)
@@ -22,15 +22,5 @@ class InsertionSort
          }
          arr[j+1] = key;
      }
- }
-
- /* A utility function to print array of size n*/
- static void printArray(int arr[])
- {
-     int n = arr.length;
-     for (int i=0; i<n; ++i)
-         System.out.print(arr[i] + " ");
-
-     System.out.println();
  }
 } /* This code is contributed by Rajat Mishra. */
