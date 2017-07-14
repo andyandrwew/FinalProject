@@ -14,15 +14,26 @@ public class MainTester
 		//modify number of entries to sort and search through below
 		int arraySizes = 200000;
 		
+		
+		long timeOfInsertion = 0;
+		long timeOfMerge = 0;
+		long timeOfLinear = 0;
+		long timeOfSelection = 0;
+		long timeOfBinary = 0;
+		long timeOfSort = 0;
+		long timeB4 = 0;
+		long timeAfter = 0;
+		
+		
 		int position = -1;
 		int[] list = new int[arraySizes];
 		int[] list1 = list;
 		int[] list2 = list;
 		int[] list3 = list;
-		
+
 		
 		//modify the integer to search for below
-		int searchNum = 100;
+		int searchNum = 15000;
 		
 		
 		//modify range of integers below 
@@ -41,39 +52,51 @@ public class MainTester
 			list3[i] = list[i];
 		}
 		
-		System.out.println("Insertion Sort....");
+		System.out.println("\nInsertion Sort....");
 		
-		long timeB4 = System.currentTimeMillis();
-		InsertionSort.sort(list);
-		long timeAfter = System.currentTimeMillis();
-		System.out.println("Insertion Sort took: " + (timeAfter - timeB4) + "ms");
+		timeB4 = System.currentTimeMillis();
+		InsertionSort.sort(list2);
+		timeAfter = System.currentTimeMillis();
+		timeOfInsertion = timeAfter - timeB4;
+		System.out.println("Insertion Sort took: " + timeOfInsertion + "ms");
 		
-		System.out.println("Merge Sort....");
+		
+		System.out.println("\nSelection Sort....");
+		
+		timeB4 = System.currentTimeMillis();
+		SelectionSort.sort(list);
+		timeAfter = System.currentTimeMillis();
+		timeOfSelection = timeAfter - timeB4;
+		System.out.println("Selection Sort took: " + timeOfSelection + "ms");
+		
+		
+		
+		System.out.println("\nMerge Sort....");
 		
 		timeB4 = System.currentTimeMillis();
 		MergeSort.sort(list1);
 		timeAfter = System.currentTimeMillis();
-		System.out.println("Merge Sort took: " + (timeAfter - timeB4) + "ms");
+		timeOfMerge = timeAfter - timeB4;
+		System.out.println("Merge Sort took: " + timeOfMerge + "ms");
 		
-		System.out.println("Bubble Sort....");
+				
 		
-		timeB4 = System.currentTimeMillis();
-		BubbleSort.bubbleSort(list2);
-		timeAfter = System.currentTimeMillis();
-		System.out.println("Bubble Sort took: " + (timeAfter - timeB4) + "ms");		
-		
-		System.out.println("\n" + "Linear Search....");
+		System.out.println("\nLinear Search....");
 		
 		timeB4 = System.currentTimeMillis();
 		position = LinearSearch.search(list3, searchNum);
 		timeAfter = System.currentTimeMillis();
 		System.out.println("Found at position " + position);
-		System.out.println("Linear Search took: " + (timeAfter - timeB4) + "ms");		
+		timeOfLinear = timeAfter - timeB4;
+		System.out.println("Linear search took: " + timeOfLinear + "ms");		
 		
-		System.out.println("Binary Search....");
+		System.out.println("\nBinary Search....");
 		
 		timeB4 = System.currentTimeMillis();
 		Arrays.sort(list3);
+		timeAfter = System.currentTimeMillis();
+		timeOfSort = timeAfter - timeB4;
+		timeB4 = System.currentTimeMillis();
 		position = Arrays.binarySearch(list3, searchNum);
 		timeAfter = System.currentTimeMillis();
 		if (position < 0)
@@ -81,9 +104,12 @@ public class MainTester
 			position = -1;
 		}
 		System.out.println("Found at position " + position);
-		System.out.println("Binary Search took: " + (timeAfter - timeB4) + "ms");
+		timeOfBinary = timeAfter - timeB4;
+		System.out.println("Binary search took: " + timeOfBinary + "ms" +
+				"\n+ " + timeOfSort + "ms for Arrays.sort() to prepare data for search.\nTotal time of binary: " 
+				+ (timeOfSort + timeOfBinary) + "ms");		
 		
-	}
+		}
 
 }
 
