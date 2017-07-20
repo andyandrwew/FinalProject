@@ -6,11 +6,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-
+/*
+ * Created by Andrew Saad and Jonathan Linder
+ */
 public class MainTester
 {
 
-	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception
 	{
 		int arraySizes = 0;
